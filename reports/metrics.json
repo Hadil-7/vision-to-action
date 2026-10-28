@@ -1,0 +1,295 @@
+{
+  "task": "Synthetic three-lane visual action classification",
+  "scope": "Same-generator synthetic holdout only; not real-world robot evaluation.",
+  "dataset_seed": 42,
+  "dataset_manifest_sha256": "c6c79be0e4046fe355d560a3d7717fe0f4b0d9575f248eb834cf3fc1f0dedd95",
+  "training_seed": 42,
+  "split_sizes": {
+    "train": 2400,
+    "validation": 400,
+    "test": 400
+  },
+  "seed_ranges": {
+    "train": [
+      126000000,
+      126002399
+    ],
+    "validation": [
+      127000000,
+      127000399
+    ],
+    "test": [
+      128000000,
+      128000399
+    ]
+  },
+  "hyperparameters": {
+    "epochs": 8,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "threads": 2
+  },
+  "environment": {
+    "torch": "2.14.1+cpu",
+    "opencv": "4.14.0",
+    "numpy": "2.5.4",
+    "device": "cpu"
+  },
+  "checkpoint_selection": "Lowest validation cross-entropy; no test-set tuning",
+  "best_epoch": 8,
+  "elapsed_seconds": 24.475,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.7056006288155914,
+      "validation_loss": 0.019258927553892136,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0027167941140942274,
+      "validation_loss": 0.0007728030672296881,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0003409904226039847,
+      "validation_loss": 0.00032455292530357837,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.0001840671220755515,
+      "validation_loss": 0.00018705109949223697,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 9.039887683078026e-05,
+      "validation_loss": 8.014296705368906e-05,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 6,
+      "train_loss": 4.2705012601800265e-05,
+      "validation_loss": 4.240558133460581e-05,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.337781307384527e-05,
+      "validation_loss": 2.8319417615421117e-05,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    },
+    {
+      "epoch": 8,
+      "train_loss": 1.5212139145054e-05,
+      "validation_loss": 1.8989136879099534e-05,
+      "validation_accuracy": 1.0,
+      "validation_macro_f1": 1.0
+    }
+  ],
+  "test": {
+    "accuracy": 1.0,
+    "macro_f1": 1.0,
+    "samples": 400,
+    "per_class": {
+      "FORWARD": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 100
+      },
+      "TURN_LEFT": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 100
+      },
+      "TURN_RIGHT": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 100
+      },
+      "STOP": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "support": 100
+      }
+    },
+    "confusion_matrix": [
+      [
+        100,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        100,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        100
+      ]
+    ],
+    "confusion_matrix_axes": "rows=true, columns=predicted; order matches labels",
+    "labels": [
+      "FORWARD",
+      "TURN_LEFT",
+      "TURN_RIGHT",
+      "STOP"
+    ],
+    "loss": 1.5267680428223685e-05
+  },
+  "baselines": {
+    "constant_forward": {
+      "accuracy": 0.25,
+      "macro_f1": 0.1,
+      "samples": 400,
+      "per_class": {
+        "FORWARD": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "support": 100
+        },
+        "TURN_LEFT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 100
+        },
+        "TURN_RIGHT": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 100
+        },
+        "STOP": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          100,
+          0,
+          0,
+          0
+        ]
+      ],
+      "confusion_matrix_axes": "rows=true, columns=predicted; order matches labels",
+      "labels": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "STOP"
+      ]
+    },
+    "opencv_colour_rule": {
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "samples": 400,
+      "per_class": {
+        "FORWARD": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 100
+        },
+        "TURN_LEFT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 100
+        },
+        "TURN_RIGHT": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 100
+        },
+        "STOP": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 100
+        }
+      },
+      "confusion_matrix": [
+        [
+          100,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          100,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          100,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          100
+        ]
+      ],
+      "confusion_matrix_axes": "rows=true, columns=predicted; order matches labels",
+      "labels": [
+        "FORWARD",
+        "TURN_LEFT",
+        "TURN_RIGHT",
+        "STOP"
+      ]
+    },
+    "note": "Fixed colour thresholds are tailored to the synthetic generator, not learned or tuned on test images."
+  }
+}
